@@ -1,0 +1,7 @@
+docker build . -t tasky-app
+--needed to copy in the .env file
+--debugged by logging into the docker container and bypassing the entrypoint app that was crashing
+docker run -it --entrypoint sh  tasky-app
+docker run -p8080:8080 -d --name tasky-container  --network mongo-network tasky-app
+docker logs dc4a37980b6e7383c5ba21593556c70918b6295814e621cdaa9da6603366815d -f
+ docker network inspect mongo-network
